@@ -6,12 +6,12 @@ function App() {
   let [matrixSize, setMatrixSize] = useState([]);
   let [stdinPosX, setStdinPosX] = useState(0);
   let [stdinPosY, setStdinPosY] = useState(0);
-  let [moveCommand, setMoveCommand] = useState('');
   
   // Incomming values as as string with total 4 letters from the input form according: wh(SartPosX)(startPosY)
   let [startValueStr, setStartValueStr] = useState('');
   
   useEffect(() => {
+    if(matrixIsSet === true) successOrFail();
   },[matrixSize, startValueStr, stdinPosX, stdinPosY])
   
   let handleValues = (e) => {
@@ -32,27 +32,33 @@ function App() {
     // Rewrite the incomming string for startposs at xy into nr and save it in 
     setStdinPosX(parseInt(startValueArr[2]));
     setStdinPosY(parseInt(startValueArr[3]));
-      
+    
     setMatrixSize(matrixSurface);
     //setObjectStartPossStr(startPoss);
     // Showing the Matrix :)
     setMatrixIsSet(true);
   }
-  let checIfkObject = (startPosX, startPosY) =>{
-    // Check where the object should be in the game start and the movment´s commands 
+  let placingObject = (startPosX, startPosY) =>{
+    // Check where the object should be in the game start
     if(stdinPosX === startPosX && stdinPosY === startPosY) return 'red';
     else return 'lightblue';
   }
   const movment = (e) => {
     // Convert the command from string into nr
     const targetBtn = parseInt(e.target.id);
-    console.log("🚀 ~ file: MainApp.js ~ line 53 ~ movment ~ targetBtn", targetBtn)
     if(targetBtn === 1) setStdinPosY(stdinPosY-1);
     if(targetBtn === 2) setStdinPosY(stdinPosY+1);
-    if(targetBtn === 3) setStdinPosX(stdinPosX+1);
-    if(targetBtn === 4) setStdinPosX(stdinPosX-1);
+
+    if(targetBtn === 3) setStdinPosX(stdinPosX+1); // Right
+    if(targetBtn === 4) setStdinPosX(stdinPosX-1); // Left
   }
-  console.log("🚀 ~ file: MainApp.js ~ line 16 ~ App ~ stdinPosX", stdinPosX, "och stdinPosY", stdinPosY)
+  const successOrFail = () => {
+    console.log("🚀 ~ file: MainApp.js ~ line 8 ~ App ~ setStdinPosX", stdinPosX)
+
+    if(stdinPosX < 0 || stdinPosX > matrixSize.width.length-1 || stdinPosY < 0 || stdinPosY > matrixSize.height.length-1) console.log('Fail :( = -1,-1');
+    else console.log('Success :)');
+  }
+  console.log("🚀 ~ file: MainApp.js ~ line 8 ~ App ~ setStdinPosX", stdinPosX)
   return (
     <section className="mainApp">
       <header id="head">
@@ -83,7 +89,6 @@ function App() {
               <button className="backward" id="2" onClick={movment}>Bakåt</button> 
           </section>
         </section>
-          <button id="0" onClick={movment}>Avsluta</button> 
         <section id="matrixTabell">
 
           {(matrixIsSet === false)
@@ -99,7 +104,7 @@ function App() {
                       const objectStyle = {
                         width: '75px',
                         border: '1px solid black',
-                        backgroundColor: checIfkObject(colIndex, rowIndex),
+                        backgroundColor: placingObject(colIndex, rowIndex),
                       }
                       //console.log("🚀 ~ file: MainApp.js ~ line 89 ~ matrixSize.width.map ~ objectStyle", objectStyle)
                       return(

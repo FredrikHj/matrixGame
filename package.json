@@ -2,16 +2,21 @@
   "name": "programming_exercise-skymill",
   "version": "0.1.0",
   "private": true,
+  "main": "./src/ElectronStart.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "concurrently": "^5.3.0",
+    "electron": "^11.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "wait-on": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

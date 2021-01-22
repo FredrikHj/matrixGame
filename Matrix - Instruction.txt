@@ -1,8 +1,19 @@
-Matrix spel:
+Matrix spel: (Skapad med React JSX, CSS, Javascript, Electron Js och distribuerad med Electron-forge
 
-Att spela är enkelt. Följ nedan:
-1.)
-2.)
-3.)
-4.)
-5.)
+Att spela är enkelt. Följ stegen nedan:
+1.) På grund av ett okänt fel i paketet electron-forge får du:
+    a.) Installera Node modulerna från filen package.json med "npm i". 
+    b.) Sarta programmet med "npm run dev".
+
+    
+2.) Ange 4 värden enligt dess huvudrubrik. Notera att cellerna börja från 0, 0 vid vald startplacering. (Har du en Matrix på 4x4 så är startplacering 33, om du vill ha objektet i högra hörnet!) 
+3.) Tryck på "Spela Matrix".
+
+Nu visas istället för informationen i vit ruta en Matrix med valda antal celler du valde som värde 1 för x och 2 för y ovan på punkt 2. Värden 3 och 4 står för objektets placering i matrix dvs i X och Y placering. 
+
+Att flytta görs via knapparna för "Förflyttning". Väderstrecken på knapparnas placering symboliserar riktingarna på hur man ska förflytta dig i matrixen (Vill du flytta från North to West trycker du på Vänster knapp osv)
+
+Öppna konsolen: via View --> Toggle Developers Tools: Välj Console
+Hamnar objektet utanför matrixen visas "Fail :( = -1,-1" i konsolen
+
+Avsluta geom att bara stänga fönstret.

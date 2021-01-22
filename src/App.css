@@ -1,5 +1,5 @@
 body{
-  min-width: 100%;
+  min-width: 900px;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   background-color: #282c34; 
@@ -42,7 +42,7 @@ hr{
   justify-content: center;
 }
 #moveBtnCrossContainer{
-  width: 15%;
+  width: 150px;
   height: 10%;
   margin-top: -75px;
   margin-left: 70%;
@@ -61,10 +61,8 @@ hr{
   margin-left: 60px;
 }
 #matrixTabell{
-  width: 100%;
+  padding-left: 25%;
   margin-top: 5%;
-  padding: 5%;
-  text-align: center;
   background-color:  white;
   color: black;
 }
